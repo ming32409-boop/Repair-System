@@ -1,0 +1,9 @@
+# Output and temporary folders
+outputs/
+tmp/
+temp/
+.tmp/
+.temp/
+
+# macOS folder metadata
+.DS_Store
