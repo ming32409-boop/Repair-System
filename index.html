@@ -5,13 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2f5597">
   <title>報修登記</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="報修登記">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <h1>報修登記</h1>
     <p class="subtitle">示範系統：請只填寫虛構的姓名與地點。</p>
+    <button type="button" id="install-btn" class="install-btn" hidden>安裝到主畫面</button>
   </header>
+  <div id="offline-banner" class="offline-banner" role="status" hidden>目前離線：可以查看畫面，但無法送出或更新清單。</div>
 
   <main>
     <section class="card" aria-labelledby="form-title">
@@ -84,8 +93,9 @@
 
   <footer class="site-footer">報修登記系統（示範）</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin="anonymous"></script>
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script src="pwa.js"></script>
 </body>
 </html>
