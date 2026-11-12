@@ -121,6 +121,10 @@
       showMessage(formMessage, "error", "系統設定錯誤：無法載入 Supabase，請稍後再試。");
       return;
     }
+    if (!navigator.onLine) {
+      showMessage(formMessage, "error", "目前離線，無法送出。填寫的內容會保留，請連上網路後再按送出。");
+      return;
+    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = "送出中…";
@@ -191,6 +195,10 @@
   async function loadList() {
     if (!client) {
       showMessage(listMessage, "error", "系統設定錯誤：無法載入 Supabase，請稍後再試。");
+      return;
+    }
+    if (!navigator.onLine) {
+      showMessage(listMessage, "error", "目前離線，無法載入清單。連上網路後請按「重新整理」。");
       return;
     }
     refreshBtn.disabled = true;

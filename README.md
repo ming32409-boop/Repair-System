@@ -9,3 +9,9 @@
 - 本機預覽：在儲存庫根目錄執行 `python3 -m http.server 8000`，開啟 http://localhost:8000/ 。
 - 發佈：GitHub Pages 選擇 `main` 分支的根目錄（/），首頁為 `index.html`。
 - `config.js` 只能放 publishable key，不要放 secret 或 service_role 金鑰。
+
+## 安裝成 App（PWA）
+- Android（Chrome）：開啟網頁後按「安裝到主畫面」按鈕，或瀏覽器選單的「安裝應用程式」。
+- iPhone（Safari）：按「分享」→「加入主畫面」。
+- 離線時可以開啟畫面，但不能送出或更新清單；報修資料不會被快取。
+- 修改 `index.html`、`style.css`、`app.js`、`pwa.js`、`config.js` 或圖示後，請把 `sw.js` 裡的 `CACHE_VERSION` 加 1，使用者才會拿到新版。

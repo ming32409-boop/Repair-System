@@ -165,3 +165,25 @@ button.secondary {
 @media (max-width: 360px) {
   .field-row { grid-template-columns: 1fr; gap: 0; }
 }
+
+/* PWA：安裝按鈕與離線提示 */
+.site-header { position: relative; }
+.install-btn {
+  margin-top: 10px;
+  background: #fff;
+  color: var(--primary);
+  padding: 6px 14px;
+  font-size: 0.9rem;
+}
+.offline-banner {
+  background: #fff4e5;
+  color: var(--mid);
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+}
+/* 從主畫面開啟時，避開 iPhone 瀏海區域 */
+@supports (padding: env(safe-area-inset-top)) {
+  .site-header { padding-top: calc(20px + env(safe-area-inset-top)); }
+  .site-footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+}
