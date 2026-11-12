@@ -1,0 +1,167 @@
+/* 報修登記：手機優先的版面，螢幕變寬時再放大間距 */
+:root {
+  --primary: #2f5597;
+  --primary-dark: #22427a;
+  --bg: #f3f5f9;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #5f6b7a;
+  --border: #d5dbe3;
+  --error: #b42318;
+  --error-bg: #fdecea;
+  --success: #1e7b3c;
+  --success-bg: #e7f6ec;
+  --high: #b42318;
+  --mid: #b25e09;
+  --low: #3f6212;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei",
+               "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+.site-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 20px 16px 16px;
+}
+.site-header h1 { margin: 0; font-size: 1.5rem; }
+.subtitle { margin: 4px 0 0; font-size: 0.9rem; opacity: 0.9; }
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 12px 32px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.card h2 { margin: 0 0 12px; font-size: 1.15rem; }
+
+/* 表單 */
+.field { margin-bottom: 14px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+label { display: block; font-weight: 600; margin-bottom: 4px; }
+.req { color: var(--error); }
+
+input, select, textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 16px;          /* 16px 以上可避免 iOS 點選時自動放大 */
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-height: 44px;         /* 手指好點的高度 */
+}
+textarea { resize: vertical; min-height: 110px; }
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+                    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 32px;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 85, 151, 0.2);
+}
+.invalid { border-color: var(--error); }
+
+.hint { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); text-align: right; }
+.field-error { margin: 4px 0 0; font-size: 0.875rem; color: var(--error); min-height: 0; }
+.field-error:empty { display: none; }
+
+button {
+  font: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-height: 44px;
+}
+#submit-btn {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 12px;
+}
+#submit-btn:hover { background: var(--primary-dark); }
+#submit-btn:disabled { opacity: 0.6; cursor: wait; }
+
+button.secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 6px 14px;
+}
+
+.message {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.message.success { background: var(--success-bg); color: var(--success); }
+.message.error { background: var(--error-bg); color: var(--error); }
+.message.info { background: #eef2f7; color: var(--muted); }
+
+/* 清單：用卡片排列，手機上不必左右捲動 */
+.list-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.list-header h2 { margin: 0; }
+
+.repair-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.repair-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
+}
+.item-top { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
+.badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: var(--text);
+}
+.badge.urgency-高 { background: #fdecea; color: var(--high); }
+.badge.urgency-中 { background: #fff4e5; color: var(--mid); }
+.badge.urgency-低 { background: #eef6e4; color: var(--low); }
+.badge.status { margin-left: auto; background: #e8eefb; color: var(--primary); }
+.item-desc { margin: 0 0 6px; white-space: pre-wrap; word-break: break-word; }
+.item-meta { margin: 0; font-size: 0.85rem; color: var(--muted); word-break: break-word; }
+
+.site-footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 0 0 24px; }
+
+@media (min-width: 600px) {
+  main { padding-top: 24px; }
+  .card { padding: 24px; }
+  #submit-btn { width: auto; padding: 12px 32px; }
+}
+
+@media (max-width: 360px) {
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+}
