@@ -107,6 +107,12 @@ d4 = val(submit(U['qcmgr'], QC), U['qcmgr']); R4 = val(f"select id from requests
 ok(val(f"select status||'|'||stage1_result from requests where id='{R4}'", role=None) == '核發主管簽核中|免簽', 'manager own request skips stage1')
 expect_err(f"select withdraw_request('{R4}')", U['qcmgr'], '不能撤回', 'cannot withdraw after 免簽')
 
+# 002：未啟用帳號只看得到自己
+ok(val("select count(*) from departments", U['off']) == '0', 'inactive user cannot list departments')
+ok(val("select count(*) from profiles", U['off']) == '1', 'inactive user sees only own profile')
+ok(val("select count(*) from profiles", U['app']) == str(len(U)), 'active user sees all profiles')
+ok(val("select count(*) from departments", U['app']) == '6', 'active user lists departments')
+
 # stats
 expect_err("select request_stats()", U['app'], '沒有權限', 'applicant cannot see stats')
 st = val("select request_stats()->>'total'||','||(request_stats()->>'issued')", U['admin'])
