@@ -15,3 +15,6 @@
 - iPhone（Safari）：按「分享」→「加入主畫面」。
 - 離線時可以開啟畫面，但不能送出或更新清單；報修資料不會被快取。
 - 修改 `index.html`、`style.css`、`app.js`、`pwa.js`、`config.js` 或圖示後，請把 `sw.js` 裡的 `CACHE_VERSION` 加 1，使用者才會拿到新版。
+
+## 相關專案
+- 開發部圖面資料申請表已移到獨立的儲存庫：https://github.com/ming32409-boop/drawing-request
