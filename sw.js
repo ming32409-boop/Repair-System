@@ -1,7 +1,7 @@
 // 報修登記 PWA 的 Service Worker
 // - 只快取報修網頁本身的檔案（app shell），讓網頁離線也能開啟。
 // - 報修資料（Supabase API）一律直接連線，不快取，避免看到過期資料。
-// - 只處理下方清單內的檔案；同網站其他資料夾（例如 圖面資料申請/）不受影響。
+// - 只處理下方清單內的檔案；同網站其他資料夾不受影響。
 // 修改網頁檔案後，請把 CACHE_VERSION 加 1，讓使用者拿到新版。
 const CACHE_VERSION = 1;
 const CACHE_NAME = `repair-app-v${CACHE_VERSION}`;
